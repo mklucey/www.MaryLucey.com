@@ -1,0 +1,13 @@
+# Unignore specific file extensions
+!*.html
+!*.css
+!*.js
+!*.jpg
+!*.png
+!*.gif
+!*.php
+
+# Unignore specific directories
+!css/
+!images/
+!js/
