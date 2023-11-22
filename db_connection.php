@@ -9,5 +9,10 @@ $database = 'if0_35418598_mydatabase'; // Your MySQL database name
 $mysqli = new mysqli($host, $username, $password, $database);
 
 
+if ($mysqli->connect_error) {
+    die('Connection failed: ' . $mysqli->connect_error);
+}
+
+
 
 ?>
