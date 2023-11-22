@@ -6,5 +6,8 @@ $username = 'if0_35418598'; // Your MySQL username
 $password = '7GPhBMcGSS'; // Your MySQL password
 $database = 'if0_35418598_mydatabase'; // Your MySQL database name
 
+$mysqli = new mysqli($host, $username, $password, $database);
+
+
 
 ?>
