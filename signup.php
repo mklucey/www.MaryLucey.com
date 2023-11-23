@@ -8,5 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	
 	 // Perform input validation if needed
+	 
+	 $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+     $result = $mysqli->query($query);
 
 ?>
