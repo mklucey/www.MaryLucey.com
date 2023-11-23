@@ -11,5 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	 
 	 $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
      $result = $mysqli->query($query);
+	 
+	 if ($result) {
+         header('Location: login.php');
+         exit();
+    } else {
+        echo 'Registration failed';
+    }
+}
 
 ?>
