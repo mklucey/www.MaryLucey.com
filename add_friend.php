@@ -16,6 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// Update the friends table in the database
     $query = "INSERT INTO friends (user_id, friend_id) VALUES ('{$_SESSION['username']}', '$friendUsername')";
     $result = $mysqli->query($query);
+	
+	if ($result) {
+        echo 'Friend added successfully';
+    } else {
+         echo 'Failed to add friend';
+    }
+}
+
+// Render add friend form
+renderTemplate('add_friend', ['username' => $_SESSION['username']]);
 
 
 
