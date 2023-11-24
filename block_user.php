@@ -16,6 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	 // Check if the user exists
     $checkUserQuery = "SELECT * FROM users WHERE username='$blockedUsername'";
     $checkUserResult = $mysqli->query($checkUserQuery);
+	
+	 if ($checkUserResult->num_rows > 0) {
+        // User exists, proceed with blocking
+
+        // Check if the user is already blocked
+        $checkBlockQuery = "SELECT * FROM blocked_users WHERE user_id='{$_SESSION['username']}' AND blocked_id='$blockedUsername'";
+        $checkBlockResult = $mysqli->query($checkBlockQuery);
+
+        if ($checkBlockResult->num_rows === 0) {
+            // User is not blocked, block the user
+            $blockQuery = "INSERT INTO blocked_users (user_id, blocked_id) VALUES ('{$_SESSION['username']}', '$blockedUsername')";
+            $blockResult = $mysqli->query($blockQuery);
+
 
 
 
