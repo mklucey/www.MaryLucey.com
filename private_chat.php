@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $friendUsername = $_GET['friend'];
-
+// Fetch and display private messages with $friendUsername
 
 
 
