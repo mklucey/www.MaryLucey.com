@@ -10,6 +10,9 @@ if (!isset($_SESSION['username'])) {
 	exit();
 }
 
+$friendUsername = $_GET['friend'];
+
+
 
 
 
