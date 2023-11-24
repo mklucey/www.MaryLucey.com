@@ -12,6 +12,11 @@ if (!isset($_SESSION['username'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newProfilePicture = $_POST['new_profile_picture'];
+	
+	// Update the profile picture in the database
+    $query = "UPDATE users SET profile_picture='$newProfilePicture' WHERE username='{$_SESSION['username']}'";
+    $result = $mysqli->query($query);
+
 
 
 
