@@ -28,6 +28,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // User is not blocked, block the user
             $blockQuery = "INSERT INTO blocked_users (user_id, blocked_id) VALUES ('{$_SESSION['username']}', '$blockedUsername')";
             $blockResult = $mysqli->query($blockQuery);
+			
+			if ($blockResult) {
+                echo 'User blocked successfully';
+            } else {
+                echo 'Failed to block user';
+            }
+        } else {
+            echo 'User is already blocked';
+        }
+    } else {
+        echo 'User not found';
+    }
+}
+
+			
+			
 
 
 
