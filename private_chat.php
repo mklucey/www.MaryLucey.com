@@ -16,6 +16,11 @@ $query = "SELECT * FROM messages WHERE (sender='$friendUsername' AND receiver='{
 $result = $mysqli->query($query);
 
 
+$privateMessages = [];
+while ($row = $result->fetch_assoc()) {
+    $privateMessages[] = $row;
+}
+
 
 
 
