@@ -12,6 +12,7 @@ if (!isset($_SESSION['username'])) {
 
 // Fetch and display messages
 $query = "SELECT * FROM messages";
+$result = $mysqli->query($query);
 
 
 ?>
