@@ -10,5 +10,7 @@ if (!isset($_SESSION['username'])) {
 	exit();
 }
 
+// Fetch and display messages
+
 
 ?>
