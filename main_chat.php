@@ -19,6 +19,8 @@ while ($row = $result->fetch_assoc()) {
     $messages[] = $row;
 }
 
+// Render main chatroom
+renderTemplate('index', ['username' => $_SESSION['username'], 'messages' => $messages]);
 
 
 ?>
