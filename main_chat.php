@@ -15,6 +15,10 @@ $query = "SELECT * FROM messages";
 $result = $mysqli->query($query);
 
 $messages = [];
+while ($row = $result->fetch_assoc()) {
+    $messages[] = $row;
+}
+
 
 
 ?>
