@@ -12,6 +12,8 @@ if (!isset($_SESSION['username'])) {
 
 $friendUsername = $_GET['friend'];
 // Fetch and display private messages with $friendUsername
+$query = "SELECT * FROM messages WHERE (sender='$friendUsername' AND receiver='{$_SESSION['username']}') OR (sender='{$_SESSION['username']}' AND receiver='$friendUsername')";
+$result = $mysqli->query($query);
 
 
 
