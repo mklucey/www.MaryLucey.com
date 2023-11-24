@@ -10,6 +10,9 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $blockedUsername = $_POST['blocked_username'];
+
 
 
 
