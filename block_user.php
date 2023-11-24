@@ -42,11 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-			
-			
-
-
-
-
-
+// Render block user form
+renderTemplate('block_user', ['username' => $_SESSION['username']]);
 ?>
