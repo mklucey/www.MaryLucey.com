@@ -10,6 +10,8 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $newProfilePicture = $_POST['new_profile_picture'];
 
 
 
