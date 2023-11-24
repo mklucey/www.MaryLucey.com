@@ -10,6 +10,10 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $friendUsername = $_POST['friend_username'];
+
+
 
 
 ?>
