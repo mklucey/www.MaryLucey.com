@@ -21,7 +21,6 @@ while ($row = $result->fetch_assoc()) {
     $privateMessages[] = $row;
 }
 
-
-
-
+// Render private chat
+renderTemplate('private_chat', ['username' => $_SESSION['username'], 'friend' => $friendUsername, 'privateMessages' => $privateMessages]);
 ?>
