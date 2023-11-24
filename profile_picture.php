@@ -24,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-
-
-
-
+// Render change profile picture form
+renderTemplate('profile', ['username' => $_SESSION['username']]);
 ?>
