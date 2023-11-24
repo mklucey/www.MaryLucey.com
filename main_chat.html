@@ -16,3 +16,4 @@
 	  <div id="messages">
 	   <?php foreach ($messages as $message): ?>
 	       <div class="message">
+		       <strong><?php echo htmlspecialchars($message['sender']); ?>:</strong>
