@@ -14,5 +14,7 @@ if (!isset($_SESSION['username'])) {
 $query = "SELECT * FROM messages";
 $result = $mysqli->query($query);
 
+$messages = [];
+
 
 ?>
