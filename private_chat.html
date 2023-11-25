@@ -22,3 +22,10 @@
                 </div>
             <?php endforeach; ?>
         </div>
+		
+		<!-- Form to send private messages -->
+        <form id="privateMessageForm" method="post" action="private_chat.php">
+            <input type="text" id="privateMessageInput" name="privateMessage" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+    </main>
