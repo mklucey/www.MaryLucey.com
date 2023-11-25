@@ -14,3 +14,11 @@
 	<main>
 	    <!-- Display private messages here -->
         <div id="privateMessages">
+		
+		    <?php foreach ($privateMessages as $privateMessage): ?>
+                <div class="message">
+                    <strong><?php echo htmlspecialchars($privateMessage['sender']); ?>:</strong>
+                    <p><?php echo htmlspecialchars($privateMessage['message']); ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
