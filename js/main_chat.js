@@ -22,4 +22,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Function to send a message to the server
 	function sendMessage(message) {
 		const xhr = new XMLHttpRequest();
+		 xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Update the UI or handle success as needed
+                    const newMessage = document.createElement('div');
+                    newMessage.textContent = message;
+                    messagesContainer.appendChild(newMessage);
+                } else {
+                    // Handle error response from the server
+                    console.error('Failed to send message');
+                }
+            }
+        };
 
