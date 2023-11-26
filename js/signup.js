@@ -38,4 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+		
+		  xhr.open('POST', 'signup.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(
+            'username=' + encodeURIComponent(username) +
+            '&password=' + encodeURIComponent(password) +
+            '&email_address=' + encodeURIComponent(emailAddress)
+        );
+    }
+});
 
