@@ -44,5 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Function to periodically fetch and update messages
 	function fetchMessages() {
 		const xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
 
 
