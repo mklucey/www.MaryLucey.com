@@ -5,3 +5,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	const messagesContainer = document.getElementById('messages');
 	
 	// Event listener for submitting a message
+	 messageForm.addEventListener('submit', function(event) {
