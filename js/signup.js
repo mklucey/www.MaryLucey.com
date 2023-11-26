@@ -8,3 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Event listener for submitting the signup form
 	signupForm.addEventListener('submit', function(event) {
 		event.preventDefault();
+		
+		const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        const emailAddress = emailAddressInput.value.trim();
