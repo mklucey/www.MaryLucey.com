@@ -7,3 +7,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Event listener for submitting the signup form
 	signupForm.addEventListener('submit', function(event) {
+		event.preventDefault();
