@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+		
+		xhr.open('POST', 'private_chat.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('private_message=' + encodeURIComponent(privateMessage));
+    }
+
 
 
 
