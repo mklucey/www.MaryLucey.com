@@ -4,3 +4,5 @@ document.addEventListener('DOMContentLoaded', function() {
 	const usernameInput = document.getElementById('username');
 	const passwordInput = document.getElementById('password');
 	const emailAddressInput = document.getElementById('email_address');
+	
+	// Event listener for submitting the signup form
