@@ -18,4 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		   // Clear the input field
         messageInput.value = '';
     });
+	
+	// Function to send a message to the server
 
