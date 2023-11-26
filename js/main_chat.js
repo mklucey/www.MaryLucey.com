@@ -45,5 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	function fetchMessages() {
 		const xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
+		 if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Update the UI with the fetched messages
+                    messagesContainer.innerHTML = xhr.responseText;
+                } else {
+                    // Handle error response from the server
+                    console.error('Failed to fetch messages');
+                }
+            }
+        };
+
+        xhr.open('GET', 'main_chat.php', true);
+        xhr.send();
+    }
+
 
 
