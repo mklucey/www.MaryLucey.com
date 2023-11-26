@@ -38,6 +38,21 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send('private_message=' + encodeURIComponent(privateMessage));
     }
+	
+	// Function to periodically fetch and update private messages
+    function fetchPrivateMessages() {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Update the UI with the fetched private messages
+                    privateMessagesContainer.innerHTML = xhr.responseText;
+                } else {
+                    // Handle error response from the server
+                    console.error('Failed to fetch private messages');
+                }
+            }
+        };
 
 
 
