@@ -20,4 +20,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 	
 	// Function to send a message to the server
+	function sendMessage(message) {
 
