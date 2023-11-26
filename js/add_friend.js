@@ -16,3 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear the input field
         friendUsernameInput.value = '';
     });
+	
+	  // Function to send a friend request to the server
+    function sendFriendRequest(friendUsername) {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Update the UI or handle success as needed
+                    console.log('Friend request sent successfully');
+                } else {
+                    // Handle error response from the server
+                    console.error('Failed to send friend request');
+                }
+            }
+        };
