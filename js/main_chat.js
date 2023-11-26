@@ -40,5 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send('message=' + encodeURIComponent(message));
     }
+	
+	// Function to periodically fetch and update messages
 
 
