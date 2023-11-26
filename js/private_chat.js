@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Send the private message to the server using AJAX
             sendPrivateMessage(privateMessage);
         }
+		
+		// Clear the input field
+        privateMessageInput.value = '';
+    });
+
 
 
 
