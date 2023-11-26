@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Function to send a private message to the server
     function sendPrivateMessage(privateMessage) {
+		const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
 
 
 
