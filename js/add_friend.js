@@ -31,3 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+		
+		 xhr.open('POST', 'add_friend.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('friend_username=' + encodeURIComponent(friendUsername));
+    }
+});
