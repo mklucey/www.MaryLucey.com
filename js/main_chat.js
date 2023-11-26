@@ -11,3 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		 const message = messageInput.value.trim();
 		 
 		  if (message !== '') {
+			  // Send the message to the server using AJAX
+             sendMessage(message);
+          }
