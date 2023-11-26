@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
         xhr.open('GET', 'main_chat.php', true);
         xhr.send();
     }
+	
+	// Fetch messages initially and set up a timer for periodic updates
+    fetchMessages();
+    setInterval(fetchMessages, 5000); // Update every 5 seconds (adjust as needed)
+});
 
 
 
