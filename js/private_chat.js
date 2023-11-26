@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		// Clear the input field
         privateMessageInput.value = '';
     });
+	
+	// Function to send a private message to the server
+    function sendPrivateMessage(privateMessage) {
 
 
 
