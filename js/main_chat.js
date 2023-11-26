@@ -9,3 +9,5 @@ document.addEventListener('DOMContentLoaded', function() {
 		 event.preventDefault();
 		 
 		 const message = messageInput.value.trim();
+		 
+		  if (message !== '') {
