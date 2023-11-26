@@ -6,3 +6,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Event listener for submitting a message
 	 messageForm.addEventListener('submit', function(event) {
+		 event.preventDefault();
