@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function sendPrivateMessage(privateMessage) {
 		const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Update the UI with the fetched private messages
+                    privateMessagesContainer.innerHTML = xhr.responseText;
+                } else {
+                    // Handle error response from the server
+                    console.error('Failed to send private message');
+                }
+            }
+        };
 
 
 
