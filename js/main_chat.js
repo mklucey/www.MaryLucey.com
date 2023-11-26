@@ -14,3 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			  // Send the message to the server using AJAX
              sendMessage(message);
           }
+		  
+		   // Clear the input field
+        messageInput.value = '';
+    });
+
