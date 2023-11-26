@@ -6,3 +6,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	const emailAddressInput = document.getElementById('email_address');
 	
 	// Event listener for submitting the signup form
+	signupForm.addEventListener('submit', function(event) {
