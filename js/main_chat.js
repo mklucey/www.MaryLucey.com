@@ -35,4 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+		
+		xhr.open('POST', 'main_chat.php', true);
 
