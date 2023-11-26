@@ -53,6 +53,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+		
+		  xhr.open('GET', 'private_chat.php', true);
+          xhr.send();
+    }
+
+    // Fetch private messages initially and set up a timer for periodic updates
+    fetchPrivateMessages();
+    setInterval(fetchPrivateMessages, 5000); // Update every 5 seconds (adjust as needed)
+});
 
 
 
