@@ -5,4 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	 // Event listener for submitting a new profile picture
      profileForm.addEventListener('submit', function(event) {
          event.preventDefault();
+		 
+		 const newProfilePicture = newProfilePictureInput.value.trim();
+
+        if (newProfilePicture !== '') {
+            // Send the new profile picture to the server using AJAX
+            updateProfilePicture(newProfilePicture);
+        }
+
+        // Clear the input field
+        newProfilePictureInput.value = '';
+    });
+
 
