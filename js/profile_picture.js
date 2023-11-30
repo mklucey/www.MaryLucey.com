@@ -31,5 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         };
+		
+		xhr.open('POST', 'profile_picture.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('new_profile_picture=' + encodeURIComponent(newProfilePicture));
+    }
+});
 
 
