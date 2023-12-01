@@ -3,4 +3,5 @@
 body {
   background: linear-gradient(to right, #dc143c, #19c2fa, #20fa19);
   font-family: 'Arial', sans-serif;
+  font-size: 24px;
 }
