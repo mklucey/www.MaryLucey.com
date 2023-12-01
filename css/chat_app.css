@@ -1,1 +1,5 @@
 /* Chat_app.css */
+
+body {
+  background: linear-gradient(to right, #dc143c, #19c2fa, #20fa19);
+}
