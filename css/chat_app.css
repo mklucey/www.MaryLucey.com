@@ -55,5 +55,9 @@ button {
 
 /* Add Friend and Block User styles */
 h2 {
+    background-color: #00ff15;
+    color: white;
+    padding: 10px;
+    text-align: center;
 
 }
