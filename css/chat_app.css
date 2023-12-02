@@ -43,5 +43,5 @@ button {
 
 /* Message styles */
 #messages, #privateMessages {
-	
+     margin-top: 20px;	
 }
