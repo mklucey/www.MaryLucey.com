@@ -38,4 +38,5 @@ input, button {
 button {
     background-color: #00ff15;
 	color: white;
+	cursor: pointer;
 }
