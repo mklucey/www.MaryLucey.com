@@ -47,5 +47,8 @@ button {
 }
 
 .message {
-
+    background-color: #dc143c;
+	color: white;
+    padding: 10px;
+    margin-bottom: 10px;
 }
