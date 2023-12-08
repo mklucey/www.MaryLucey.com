@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$password = $_POST['password'];
 	
 	$sql = "SELECT * FROM users WHERE username = '$username'";
+	$result = $conn->query($sql);
 
 
 ?>
