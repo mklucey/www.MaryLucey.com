@@ -12,8 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
 		if (password_verify($password, $row['password'])) {
-			 $_SESSION['user_id'] = $row['id'];
-             echo "Login successful";
+			$_SESSION['user_id'] = $row['id'];
+            echo "Login successful";
+		 } else {
+             echo "Invalid password";
+        }
+    } else {
+        echo "User not found";
+    }
+}
 
 
 ?>
