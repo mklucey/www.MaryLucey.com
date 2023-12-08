@@ -7,6 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$email = $_POST['email'];
 	
 	$sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+	
+	if ($conn->query($sql) === TRUE) {
+        echo "User registered successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
 
 
 ?>
