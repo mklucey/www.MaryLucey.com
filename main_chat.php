@@ -5,4 +5,7 @@ if (!isset($_SESSION['user_id'])) {
 	exit();
 }
 
+require_once 'db_connection.php';
+
+
 ?>
