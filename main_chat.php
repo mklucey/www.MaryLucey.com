@@ -13,6 +13,11 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
+	
+	// Display online users
+    $sqlAllUsers = "SELECT * FROM users WHERE user_id != '$user_id'";
+    $resultAllUsers = $conn->query($sqlAllUsers);
+
 
 
 ?>
