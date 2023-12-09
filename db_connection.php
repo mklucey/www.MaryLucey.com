@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root"; 
 $database = "chat_app";
 
 // Create a new mysqli connection
@@ -15,6 +15,4 @@ if ($conn->connect_error) {
 
 // Optionally, set the character set to utf8 or another appropriate value
 $conn->set_charset("utf8");
-
-
 ?>
