@@ -42,6 +42,20 @@ if ($result->num_rows > 0) {
             echo "Error: " . $insertMessageSQL . "<br>" . $conn->error;
         }
     }
+	
+	 // Sample: Display recent chat messages
+    $sqlRecentMessages = "SELECT * FROM messages WHERE user_id = '$user_id' ORDER BY timestamp DESC LIMIT 10";
+    $resultRecentMessages = $conn->query($sqlRecentMessages);
+
+    echo "<h2>Recent Messages</h2>";
+
+    if ($resultRecentMessages->num_rows > 0) {
+        while ($row = $resultRecentMessages->fetch_assoc()) {
+            echo "<p>" . $row['message'] . "</p>";
+        }
+    } else {
+        echo "No recent messages.";
+    }
 
 
 
