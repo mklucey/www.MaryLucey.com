@@ -1,13 +1,23 @@
+# Ignore everything
+*
+
 # Unignore specific file extensions
+!*.php
 !*.html
 !*.css
 !*.js
-!*.jpg
-!*.png
-!*.gif
-!*.php
 
 # Unignore specific directories
+!assets/
 !css/
-!images/
 !js/
+!images/
+
+# Unignore all types of image file extensions
+!*.png
+!*.jpg
+!*.jpeg
+!*.gif
+!*.bmp
+!*.svg
+# Add more image extensions if needed
