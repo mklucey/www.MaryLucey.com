@@ -28,6 +28,21 @@ if ($result->num_rows > 0) {
     } else {
         echo "No users online.";
     }
+	
+	// Handle chat message submission
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $message = $_POST['message'];
+
+        // Insert the chat message into the database or handle as needed
+        // For example, you can insert the message into a 'messages' table
+        $insertMessageSQL = "INSERT INTO messages (user_id, message) VALUES ('$user_id', '$message')";
+        if ($conn->query($insertMessageSQL) === TRUE) {
+            echo "<p>Message sent: $message</p>";
+        } else {
+            echo "Error: " . $insertMessageSQL . "<br>" . $conn->error;
+        }
+    }
+
 
 
 
