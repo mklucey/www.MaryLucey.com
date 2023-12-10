@@ -19,6 +19,15 @@ if ($result->num_rows > 0) {
     $resultAllUsers = $conn->query($sqlAllUsers);
 
     echo "<h1>Main Chat</h1>";
+	
+	 if ($resultAllUsers->num_rows > 0) {
+        echo "Users online:<br>";
+        while ($row = $resultAllUsers->fetch_assoc()) {
+            echo $row['username'] . "<br>";
+        }
+    } else {
+        echo "No users online.";
+    }
 
 
 
