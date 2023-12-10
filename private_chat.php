@@ -27,15 +27,9 @@ if ($result->num_rows > 0) {
     } else {
         echo "No private messages.";
     }
+} else {
+    echo "User not found";
+}
 
-
-
-
-
-
-
-
-
-
-
+$conn->close();
 ?>
