@@ -16,6 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		 // Insert user data into the database
         $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashedPassword', '$email')";
         $result = mysqli_query($conn, $sql);
+		
+		 if ($result) {
+             echo "Signup successful. You can now login.";
+             header('Location: login.html'); // Redirect to login page
+             exit();
 
 
 
