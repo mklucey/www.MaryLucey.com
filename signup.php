@@ -13,18 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Hash the password (use a secure hashing algorithm)
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert user data into the database
-        $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashedPassword', '$email')";
-        $result = mysqli_query($conn, $sql);
+        // Check if the username already exists
+        $checkUsernameQuery = "SELECT * FROM users WHERE username = '$username'";
+        $checkUsernameResult = mysqli_query($conn, $checkUsernameQuery);
 
-        if ($result) {
-            header('Location: login.html'); // Redirect to login page
-            echo "Signup successful. You can now login.";
-            exit();
+        if (mysqli_num_rows($checkUsernameResult) > 0) {
+            echo "Signup failed. Username already exists.";
         } else {
-            header('Location: signup.html'); // Redirect to signup page
-            echo "Signup failed. Please try again.";
-            exit();
+            // Insert user data into the database
+            $insertUserQuery = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashedPassword', '$email')";
+            $result = mysqli_query($conn, $insertUserQuery);
+
+            if ($result) {
+                header('Location: login.html'); // Redirect to login page
+                exit();
+            } else {
+                echo "Signup failed. Please try again.";
+            }
         }
     }
 }
