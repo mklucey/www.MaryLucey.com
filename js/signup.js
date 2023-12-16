@@ -7,3 +7,4 @@ $(document).ready(function () {
 		var email = $('#email').val();
 		
 	    $.ajax({
+			type: 'POST',
