@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	} else {
         // Hash the password (use a secure hashing algorithm)
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+		
+		 // Insert user data into the database
+        $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashedPassword', '$email')";
+        $result = mysqli_query($conn, $sql);
+
 
 
 
