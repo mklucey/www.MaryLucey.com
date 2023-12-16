@@ -9,6 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// Validate input
     if (empty($username) || empty($password) || empty($email)) {
         echo "Signup failed. Please fill out all fields.";
+	} else {
+        // Hash the password (use a secure hashing algorithm)
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
 
 
 
