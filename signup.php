@@ -21,6 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              echo "Signup successful. You can now login.";
              header('Location: login.html'); // Redirect to login page
              exit();
+		 } else {
+            echo "Signup failed. Please try again.";
+            header('Location: signup.html'); // Redirect to signup page
+            exit();
+        }
+    }
+}
 
 
 
