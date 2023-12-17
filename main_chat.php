@@ -39,12 +39,20 @@ $resultChatMessages = mysqli_query($conn, $sqlChatMessages);
 
 $chatMessages = [];
 
+while ($row = mysqli_fetch_assoc($resultChatMessages)) {
+    $chatMessages[] = [
+        'content' => $row['content'],
+        'timestamp' => $row['timestamp'],
+        'sender_username' => $row['sender_username']
+    ];
+}
 
-
-
-
-
-
-
-
+// Return JSON data
+header('Content-Type: application/json');
+echo json_encode([
+    'currentUserData' => $currentUserData,
+    'userList' => $userListData,
+    'chatMessages' => $chatMessages
+]);
+exit();
 ?>
