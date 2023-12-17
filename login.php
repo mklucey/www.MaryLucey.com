@@ -8,6 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// Validate input
     if (empty($username) || empty($password)) {
         echo "Login failed. Please enter both username and password.";
+	} else {
+        // Fetch user data from the database
+        $sql = "SELECT * FROM users WHERE username = '$username'";
+        $result = mysqli_query($conn, $sql);
 
 
 ?>
