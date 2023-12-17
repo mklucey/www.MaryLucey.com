@@ -22,5 +22,11 @@ $(document).ready(function () {
                     $('#signupError').text(response);
                 }
             },
+			 error: function () {
+                alert('An error occurred during the signup process. Please try again.');
+            }
+        });
+    });
+});
 			
 			
