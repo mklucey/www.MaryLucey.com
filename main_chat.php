@@ -28,6 +28,18 @@ while ($row = mysqli_fetch_assoc($resultUserList)) {
     $userListData[] = ['id' => $row['id'], 'username' => $row['username']];
 }
 
+// Fetch chat messages
+$sqlChatMessages = "SELECT m.content, m.timestamp, u.username AS sender_username FROM messages m
+                   INNER JOIN users u ON m.sender_id = u.id
+                   WHERE m.receiver_id = $currentUserId
+                   ORDER BY m.timestamp DESC
+                   LIMIT 10"; // Adjust the query based on your requirements
+
+$resultChatMessages = mysqli_query($conn, $sqlChatMessages);
+
+$chatMessages = [];
+
+
 
 
 
