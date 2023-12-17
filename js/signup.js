@@ -14,5 +14,7 @@ $(document).ready(function () {
                 password: password,
                 email: email
             },
+			 success: function (response) {
+                if (response === "success") {
 			
 			
