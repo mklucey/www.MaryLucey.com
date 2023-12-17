@@ -27,6 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Login successful. Enjoy chatting.";
 
                 exit();
+			 } else {
+                 echo "Username and/or password is incorrect. Please try again.";
+            }
+        } else {
+            echo "Username and/or password is incorrect. Please try again.";
+        }
+    }
+}
 
 
 ?>
