@@ -15,6 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		
 		if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
+			
+			 // Verify the password
+            if (password_verify($password, $row['password'])) {
+                // Start a session and store user data
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['username'] = $row['username'];
+
+                // Display success message
+                echo "Login successful. Enjoy chatting.";
+
+                exit();
 
 
 ?>
