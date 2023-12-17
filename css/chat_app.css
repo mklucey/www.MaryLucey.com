@@ -170,3 +170,14 @@ label {
     margin-bottom: 10px;
     color: #dc143c;
 }
+
+input {
+    width: calc(100% - 20px); /* Adjust for input padding */
+    padding: 8px;
+	background-color: #dc143c;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    font-size: 18px;
+}
