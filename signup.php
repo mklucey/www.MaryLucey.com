@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate input
     if (empty($username) || empty($password) || empty($email)) {
-        echo "Signup failed. Please fill out all fields.";
+        echo "error|Signup failed. Please fill out all fields.";
     } else {
         // Hash the password (use a secure hashing algorithm)
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -18,17 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $checkUsernameResult = mysqli_query($conn, $checkUsernameQuery);
 
         if (mysqli_num_rows($checkUsernameResult) > 0) {
-            echo "Signup failed. Username already exists.";
+            echo "error|Signup failed. Username already exists.";
         } else {
             // Insert user data into the database
             $insertUserQuery = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashedPassword', '$email')";
             $result = mysqli_query($conn, $insertUserQuery);
 
             if ($result) {
-                header('Location: login.html'); // Redirect to login page
-                exit();
+                echo "success|Signup successfully completed. You can now login.";
             } else {
-                echo "Signup failed. Please try again.";
+                echo "error|Signup failed. Please try again.";
             }
         }
     }
