@@ -12,6 +12,13 @@ $currentUserId = $_SESSION['user_id'];
 $sqlCurrentUser = "SELECT * FROM users WHERE id = $currentUserId";
 $resultCurrentUser = mysqli_query($conn, $sqlCurrentUser);
 
+if ($resultCurrentUser && mysqli_num_rows($resultCurrentUser) > 0) {
+    $currentUserData = mysqli_fetch_assoc($resultCurrentUser);
+} else {
+    echo json_encode(['error' => 'User not found.']);
+    exit();
+}
+
 
 
 
