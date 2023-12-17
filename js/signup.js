@@ -9,5 +9,10 @@ $(document).ready(function () {
 	    $.ajax({
 			type: 'POST',
 			url: 'signup.php',
+			 data: {
+                username: username,
+                password: password,
+                email: email
+            },
 			
 			
