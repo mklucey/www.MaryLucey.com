@@ -8,3 +8,6 @@ $(document).ready(function () {
 		
 	    $.ajax({
 			type: 'POST',
+			url: 'signup.php',
+			
+			
