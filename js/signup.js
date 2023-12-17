@@ -16,5 +16,7 @@ $(document).ready(function () {
             },
 			 success: function (response) {
                 if (response === "success") {
+					alert('Sign up successfully completed');
+                    window.location.href = 'login.html'; // Redirect to login page
 			
 			
