@@ -12,4 +12,12 @@ $(document).ready(function () {
                 username: username,
                 password: password
             },
+			success: function (response) {
+                alert(response); // Display the response message
+
+                if (response.includes('Login successful')) {
+                    // Redirect to the main chat page upon successful login
+                    window.location.href = 'main_chat.html';
+                }
+            },
 
