@@ -183,14 +183,16 @@ input {
 
 
 button {
-    width: 100%;
+    width: 100vw; /* Set width to 100% of the viewport width */
     padding: 10px;
-    background-color: #0e94c9;
-    color: #19a619;
+    background-color: darkgreen; /* Change the background color to dark green */
+    color: #fff; /* Set text color to white */
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 18px;
 }
+
 
 /* Responsive styles */
 @media only screen and (min-width: 600px) {
