@@ -19,6 +19,15 @@ if ($resultCurrentUser && mysqli_num_rows($resultCurrentUser) > 0) {
     exit();
 }
 
+$sqlUserList = "SELECT id, username FROM users WHERE id != $currentUserId";
+$resultUserList = mysqli_query($conn, $sqlUserList);
+
+$userListData = [];
+
+while ($row = mysqli_fetch_assoc($resultUserList)) {
+    $userListData[] = ['id' => $row['id'], 'username' => $row['username']];
+}
+
 
 
 
