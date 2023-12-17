@@ -181,3 +181,13 @@ input {
     border-radius: 8px;
     font-size: 18px;
 }
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0e94c9;
+    color: #19a619;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
