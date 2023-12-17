@@ -18,5 +18,9 @@ $(document).ready(function () {
                 if (response === "success") {
 					alert('Sign up successfully completed');
                     window.location.href = 'login.html'; // Redirect to login page
+				} else {
+                    $('#signupError').text(response);
+                }
+            },
 			
 			
