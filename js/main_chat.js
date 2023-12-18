@@ -49,5 +49,12 @@ $(document).ready(function() {
             }
         });
     });
+	
+	 // Handle user selection
+    $('#userList').on('click', 'div', function() {
+        $('#userList div').removeClass('active');
+        $(this).addClass('active');
+    });
+});
 
 
