@@ -6,7 +6,7 @@ body, h2, p, form, label, input, button {
 
 body {
     font-family: 'Comic Sans MS', cursive;
-	background: url(images/chat_app_bg.png) no-repeat center center fixed;
+	background: url('../images/chat_app_bg.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
