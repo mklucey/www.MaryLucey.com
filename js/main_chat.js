@@ -25,3 +25,11 @@ $(document).ready(function() {
             console.error('Error fetching data');
         }
     });
+	
+	// Handle chat form submission
+    $('#chatForm').submit(function(event) {
+        event.preventDefault();
+
+        var message = $('#message').val();
+        var receiverId = $('#userList div.active').data('user-id'); // Assuming you have an active class for the selected user
+
