@@ -22,6 +22,9 @@ $('#chatForm').submit(function (event) {
         error: function (jqXHR, textStatus, errorThrown) {
             // Log specific error details to the console
             console.error('Error submitting chat message:', textStatus, errorThrown);
+
+            // Log the response text for further debugging
+            console.log(jqXHR.responseText);
         }
     });
 });
