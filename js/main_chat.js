@@ -32,4 +32,22 @@ $(document).ready(function() {
 
         var message = $('#message').val();
         var receiverId = $('#userList div.active').data('user-id'); // Assuming you have an active class for the selected user
+		
+		// Perform AJAX request to handle the form submission in the same main_chat.php file
+        $.ajax({
+            url: 'main_chat.php',
+            method: 'POST',
+            data: { message: message, receiver_id: receiverId },
+            dataType: 'json', // Expect JSON response
+            success: function(response) {
+                // Handle success response
+                console.log(response);
+            },
+            error: function() {
+                // Handle error
+                console.error('Error submitting chat message');
+            }
+        });
+    });
+
 
