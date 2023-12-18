@@ -10,14 +10,22 @@ $('#chatForm').submit(function(event) {
         url: 'main_chat.php',
         method: 'POST',
         data: { message: message, receiver_id: receiverId },
-        dataType: 'json',
+        dataType: 'text', // Treat the response as plain text
         success: function(response) {
-            // Handle success response
-            console.log(response);
+            try {
+                // Try to parse the response as JSON
+                var jsonResponse = JSON.parse(response);
 
-            // Assuming the response includes the newly sent message data
-            var newMessageHtml = '<div><strong>' + response.sender_username + ':</strong> ' + response.content + ' (' + response.timestamp + ')</div>';
-            $('#chatMessages').prepend(newMessageHtml); // Prepend the new message to the chat area
+                // Handle success response
+                console.log(jsonResponse);
+
+                // Assuming the response includes the newly sent message data
+                var newMessageHtml = '<div><strong>' + jsonResponse.sender_username + ':</strong> ' + jsonResponse.content + ' (' + jsonResponse.timestamp + ')</div>';
+                $('#chatMessages').prepend(newMessageHtml); // Prepend the new message to the chat area
+            } catch (e) {
+                // Log an error if JSON parsing fails
+                console.error('Error parsing JSON response:', e);
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Log specific error details to the console
