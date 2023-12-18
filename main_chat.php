@@ -48,8 +48,6 @@ while ($row = mysqli_fetch_assoc($resultChatMessages)) {
 }
 
 // Return JSON data
-header('Content-Type: application/json');
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle the form submission and return the newly sent message data
     $messageContent = $_POST['message'];
@@ -81,11 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 } else {
     // Return initial data for the chat page
-    echo json_encode([
+    $responseData = [
         'currentUserData' => $currentUserData,
         'userList' => $userListData,
         'chatMessages' => $chatMessages
-    ]);
+    ];
+
+    header('Content-Type: application/json');
+    echo json_encode($responseData);
     exit();
 }
 ?>
