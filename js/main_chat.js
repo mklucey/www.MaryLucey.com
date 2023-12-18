@@ -5,22 +5,31 @@ $(document).ready(function () {
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-            // Display current user's username
-            $('#currentUsername').text(data.currentUserData.username);
+            try {
+                if (data && data.currentUserData && data.userList && data.chatMessages) {
+                    // Display current user's username
+                    $('#currentUsername').text(data.currentUserData.username);
 
-            // Display user list
-            var userListHtml = '';
-            data.userList.forEach(function (user) {
-                userListHtml += '<div data-user-id="' + user.id + '">' + user.username + '</div>';
-            });
-            $('#userList').html(userListHtml);
+                    // Display user list
+                    var userListHtml = '';
+                    data.userList.forEach(function (user) {
+                        userListHtml += '<div data-user-id="' + user.id + '">' + user.username + '</div>';
+                    });
+                    $('#userList').html(userListHtml);
 
-            // Display chat messages
-            var chatMessagesHtml = '';
-            data.chatMessages.forEach(function (message) {
-                chatMessagesHtml += '<div><strong>' + message.sender_username + ':</strong> ' + message.content + ' (' + message.timestamp + ')</div>';
-            });
-            $('#chatMessages').html(chatMessagesHtml);
+                    // Display chat messages
+                    var chatMessagesHtml = '';
+                    data.chatMessages.forEach(function (message) {
+                        chatMessagesHtml += '<div><strong>' + message.sender_username + ':</strong> ' + message.content + ' (' + message.timestamp + ')</div>';
+                    });
+                    $('#chatMessages').html(chatMessagesHtml);
+                } else {
+                    console.error('Invalid or incomplete data received:', data);
+                }
+            } catch (error) {
+                console.error('Error handling response:', error);
+                console.log('Raw response:', data);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.error('Error fetching initial chat data:', textStatus, errorThrown);
