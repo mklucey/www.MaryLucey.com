@@ -1,9 +1,4 @@
 <?php
-// Enable error reporting for debugging purposes
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
 include 'db_connection.php';
 
 session_start();
@@ -14,6 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $currentUserId = $_SESSION['user_id'];
+
+// Fetch the current user's data
 $sqlCurrentUser = "SELECT * FROM users WHERE id = $currentUserId";
 $resultCurrentUser = mysqli_query($conn, $sqlCurrentUser);
 
@@ -24,6 +21,7 @@ if ($resultCurrentUser && mysqli_num_rows($resultCurrentUser) > 0) {
     exit();
 }
 
+// Fetch the list of users
 $sqlUserList = "SELECT id, username FROM users WHERE id != $currentUserId";
 $resultUserList = mysqli_query($conn, $sqlUserList);
 
@@ -73,16 +71,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    // Get the inserted message's timestamp
+    $sqlGetTimestamp = "SELECT timestamp FROM messages WHERE id = LAST_INSERT_ID()";
+    $resultTimestamp = mysqli_query($conn, $sqlGetTimestamp);
+
+    if (!$resultTimestamp || mysqli_num_rows($resultTimestamp) == 0) {
+        echo json_encode(['error' => 'Error getting the timestamp.']);
+        exit();
+    }
+
+    $timestamp = mysqli_fetch_assoc($resultTimestamp)['timestamp'];
+
     // Assuming the response includes the newly sent message data
     $response = [
         'content' => $messageContent,
-        'timestamp' => date('Y-m-d H:i:s'), // Use the current timestamp
+        'timestamp' => $timestamp,
         'sender_username' => $currentUserData['username']
     ];
 
     // Set the content type to JSON
     header('Content-Type: application/json');
-    
     echo json_encode($response);
     exit();
 } else {
