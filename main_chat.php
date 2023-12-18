@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_assoc($resultChatMessages)) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle the form submission and return the newly sent message data
     $messageContent = $_POST['message'];
-    $receiverId = $_POST['receiver_id']; // Assuming you have a receiver_id in the form data
+    $receiverId = isset($_POST['receiver_id']) ? $_POST['receiver_id'] : null; // Check if receiver_id is set
 
     // Perform the necessary database operations to save the new message
     $sqlInsertMessage = "INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)";
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'sender_username' => $currentUserData['username']
     ];
 
-    // Set the content type to JSON
+    // Set the content type to JSON before any output
     header('Content-Type: application/json');
     echo json_encode($response);
     exit();
@@ -101,10 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'chatMessages' => $chatMessages
     ];
 
-    // Set the content type to JSON
+    // Set the content type to JSON before any output
     header('Content-Type: application/json');
     
     echo json_encode($responseData);
     exit();
 }
 ?>
+
