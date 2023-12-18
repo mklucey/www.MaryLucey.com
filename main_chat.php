@@ -75,6 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'sender_username' => $currentUserData['username']
     ];
 
+    // Set the content type to JSON
+    header('Content-Type: application/json');
+    
     echo json_encode($response);
     exit();
 } else {
@@ -85,7 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'chatMessages' => $chatMessages
     ];
 
+    // Set the content type to JSON
     header('Content-Type: application/json');
+    
     echo json_encode($responseData);
     exit();
 }
