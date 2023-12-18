@@ -49,10 +49,43 @@ while ($row = mysqli_fetch_assoc($resultChatMessages)) {
 
 // Return JSON data
 header('Content-Type: application/json');
-echo json_encode([
-    'currentUserData' => $currentUserData,
-    'userList' => $userListData,
-    'chatMessages' => $chatMessages
-]);
-exit();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Handle the form submission and return the newly sent message data
+    $messageContent = $_POST['message'];
+    $receiverId = $_POST['receiver_id']; // Assuming you have a receiver_id in the form data
+
+    // Perform the necessary database operations to save the new message
+    $sqlInsertMessage = "INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)";
+    $stmtInsertMessage = mysqli_prepare($conn, $sqlInsertMessage);
+
+    // Assuming you have a session variable for the sender_id
+    $senderId = $_SESSION['user_id'];
+
+    mysqli_stmt_bind_param($stmtInsertMessage, "iis", $senderId, $receiverId, $messageContent);
+    $resultInsertMessage = mysqli_stmt_execute($stmtInsertMessage);
+
+    if (!$resultInsertMessage) {
+        echo json_encode(['error' => 'Error saving the message to the database.']);
+        exit();
+    }
+
+    // Assuming the response includes the newly sent message data
+    $response = [
+        'content' => $messageContent,
+        'timestamp' => date('Y-m-d H:i:s'), // Use the current timestamp
+        'sender_username' => $currentUserData['username']
+    ];
+
+    echo json_encode($response);
+    exit();
+} else {
+    // Return initial data for the chat page
+    echo json_encode([
+        'currentUserData' => $currentUserData,
+        'userList' => $userListData,
+        'chatMessages' => $chatMessages
+    ]);
+    exit();
+}
 ?>
