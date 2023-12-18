@@ -13,3 +13,15 @@ $(document).ready(function() {
                 userListHtml += '<div data-user-id="' + user.id + '">' + user.username + '</div>';
             });
             $('#userList').html(userListHtml);
+			
+			 // Display chat messages
+            var chatMessagesHtml = '';
+            $.each(data.chatMessages, function(index, message) {
+                chatMessagesHtml += '<div><strong>' + message.sender_username + ':</strong> ' + message.content + ' (' + message.timestamp + ')</div>';
+            });
+            $('#chatMessages').html(chatMessagesHtml);
+        },
+        error: function() {
+            console.error('Error fetching data');
+        }
+    });
