@@ -10,7 +10,7 @@ body {
     color: limegreen;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #DD1E4B, #02F9FF);
+    background-image: url("images/chat_app_bg.png");
     display: flex;
     flex-direction: column;
     align-items: center;
