@@ -12,12 +12,17 @@ $('#chatForm').submit(function (event) {
         data: { message: message, receiver_id: receiverId },
         dataType: 'json',
         success: function (response) {
-            // Handle success response
-            console.log(response);
+            // Check if the response is valid JSON
+            if (response && typeof response === 'object') {
+                // Handle success response
+                console.log(response);
 
-            // Assuming the response includes the newly sent message data
-            var newMessageHtml = '<div><strong>' + response.sender_username + ':</strong> ' + response.content + ' (' + response.timestamp + ')</div>';
-            $('#chatMessages').prepend(newMessageHtml); // Prepend the new message to the chat area
+                // Assuming the response includes the newly sent message data
+                var newMessageHtml = '<div><strong>' + response.sender_username + ':</strong> ' + response.content + ' (' + response.timestamp + ')</div>';
+                $('#chatMessages').prepend(newMessageHtml); // Prepend the new message to the chat area
+            } else {
+                console.error('Invalid JSON response:', response);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Log specific error details to the console
