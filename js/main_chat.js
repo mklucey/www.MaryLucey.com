@@ -4,7 +4,7 @@ $(document).ready(function () {
         url: 'main_chat.php',
         method: 'GET',
         dataType: 'json',
-        success: function (data) {
+        success: function (data, textStatus, jqXHR) {
             try {
                 if (data && data.currentUserData && data.userList && data.chatMessages) {
                     // Display current user's username
@@ -20,7 +20,7 @@ $(document).ready(function () {
                     // Display chat messages
                     var chatMessagesHtml = '';
                     data.chatMessages.forEach(function (message) {
-                        chatMessagesHtml += '<div><strong>' + message.sender_username + ':</strong> ' + message.content + ' (' + message.timestamp + ')</div>';
+                        chatMessagesHtml += '<div><strong>' + message.sender_username + ':</strong> ' + message.content + ' (' + new Date(message.timestamp).toLocaleString() + ')</div>';
                     });
                     $('#chatMessages').html(chatMessagesHtml);
                 } else {
@@ -34,6 +34,13 @@ $(document).ready(function () {
         error: function (jqXHR, textStatus, errorThrown) {
             console.error('Error fetching initial chat data:', textStatus, errorThrown);
             console.log(jqXHR.responseText);
+
+            // Handle different HTTP status codes
+            if (jqXHR.status === 500) {
+                console.error('Internal Server Error');
+            } else {
+                console.error('Unexpected error');
+            }
         }
     });
 
@@ -52,10 +59,10 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 try {
-                    // Check if the response is not empty and is valid JSON
+                    // Check if the response is valid JSON
                     if (response && typeof response === 'object') {
                         // Assuming the response includes the newly sent message data
-                        var newMessageHtml = '<div><strong>' + response.sender_username + ':</strong> ' + response.content + ' (' + response.timestamp + ')</div>';
+                        var newMessageHtml = '<div><strong>' + response.sender_username + ':</strong> ' + response.content + ' (' + new Date(response.timestamp).toLocaleString() + ')</div>';
                         $('#chatMessages').prepend(newMessageHtml); // Prepend the new message to the chat area
                     } else {
                         console.error('Invalid JSON response:', response);
@@ -72,3 +79,4 @@ $(document).ready(function () {
         });
     });
 });
+
