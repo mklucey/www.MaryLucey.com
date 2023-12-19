@@ -53,8 +53,13 @@ while ($row = mysqli_fetch_assoc($resultChatMessages)) {
 // Return JSON data
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle the form submission and return the newly sent message data
-    $messageContent = $_POST['message'];
+    $messageContent = isset($_POST['message']) ? $_POST['message'] : '';
     $receiverId = isset($_POST['receiver_id']) ? $_POST['receiver_id'] : null; // Check if receiver_id is set
+
+    if (empty($messageContent)) {
+        echo json_encode(['error' => 'Message content is empty.']);
+        exit();
+    }
 
     // Perform the necessary database operations to save the new message
     $sqlInsertMessage = "INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)";
@@ -108,4 +113,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 ?>
-
