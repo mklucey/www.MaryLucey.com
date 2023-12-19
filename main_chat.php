@@ -109,6 +109,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Set the content type to JSON before any output
     header('Content-Type: application/json');
     
+    // Add a delay for demonstration purposes
+    sleep(2);
+
     echo json_encode($responseData);
     exit();
 }
