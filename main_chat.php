@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_assoc($resultChatMessages)) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle the form submission and return the newly sent message data
     $messageContent = isset($_POST['message']) ? $_POST['message'] : '';
-    $receiverId = isset($_POST['receiver_id']) ? $_POST['receiver_id'] : null; // Check if receiver_id is set
+    $receiverId = isset($_POST['receiver_id']) ? $_POST['receiver_id'] : null;
 
     if (empty($messageContent)) {
         echo json_encode(['error' => 'Message content is empty.']);
@@ -65,7 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sqlInsertMessage = "INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)";
     $stmtInsertMessage = mysqli_prepare($conn, $sqlInsertMessage);
 
-    // Assuming you have a session variable for the sender_id
     $senderId = $_SESSION['user_id'];
 
     mysqli_stmt_bind_param($stmtInsertMessage, "iis", $senderId, $receiverId, $messageContent);
@@ -77,24 +76,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Get the inserted message's timestamp
-    $sqlGetTimestamp = "SELECT timestamp FROM messages WHERE id = LAST_INSERT_ID()";
-    $resultTimestamp = mysqli_query($conn, $sqlGetTimestamp);
+    $timestamp = date('Y-m-d H:i:s');
 
-    if (!$resultTimestamp || mysqli_num_rows($resultTimestamp) == 0) {
-        echo json_encode(['error' => 'Error getting the timestamp.']);
-        exit();
-    }
-
-    $timestamp = mysqli_fetch_assoc($resultTimestamp)['timestamp'];
-
-    // Assuming the response includes the newly sent message data
+    // Response with the newly sent message data
     $response = [
         'content' => $messageContent,
         'timestamp' => $timestamp,
         'sender_username' => $currentUserData['username']
     ];
 
-    // Set the content type to JSON before any output
     header('Content-Type: application/json');
     echo json_encode($response);
     exit();
@@ -106,13 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'chatMessages' => $chatMessages
     ];
 
-    // Set the content type to JSON before any output
     header('Content-Type: application/json');
-    
-    // Add a delay for demonstration purposes
-    sleep(2);
-
     echo json_encode($responseData);
     exit();
 }
 ?>
+
