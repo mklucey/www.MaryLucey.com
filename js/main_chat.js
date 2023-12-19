@@ -52,7 +52,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 try {
-                    // Check if the response is valid JSON
+                    // Check if the response is not empty and is valid JSON
                     if (response && typeof response === 'object') {
                         // Assuming the response includes the newly sent message data
                         var newMessageHtml = '<div><strong>' + response.sender_username + ':</strong> ' + response.content + ' (' + response.timestamp + ')</div>';
