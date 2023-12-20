@@ -1,7 +1,7 @@
 <?php
-$servername = "fdb1032.awardspace.net";
+$servername = "fdb1033.awardspace.net";
 $username = "4417646_chatapp";
-$password = ":MUF-z-m7)%yqN:T";
+$password = "tdzOGRqM9Cl6C?@p";
 $database = "4417646_chatapp";
 
 // Use htmlspecialchars to prevent sensitive data exposure
