@@ -1,5 +1,4 @@
-# Ignore everything
-*
+
 
 # Unignore specific file extensions
 !*.php
