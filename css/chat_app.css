@@ -155,17 +155,19 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
 }
 
 #messageInput {
-    width: calc(100% - 20px); /* Adjusted width */
+    flex: 1; /* Take up remaining space */
     padding: 10px;
     box-sizing: border-box;
     background-color: #dc143c;
     border: 1px solid limegreen;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-right: 10px;
 }
+
 button {
     width: 70px;
     padding: 10px;
@@ -176,7 +178,6 @@ button {
     color: #dc143c;
     cursor: pointer;
 }
-
 /* Mobile-friendly styles */
 @media screen and (min-width: 600px) {
     /* Add styles for larger screens if needed */
