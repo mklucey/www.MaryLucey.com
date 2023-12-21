@@ -7,3 +7,14 @@
 <link rel="stylesheet" href="css/chat_app.css">
 </head>
 <body>
+
+   <div id="friendList"></div>
+    <div id="chatContainer">
+        <div id="privateChatMessages"></div>
+        <form id="privateMessageForm" action=”private_chat.php” method=”post”>
+            <input type="hidden" id="friendIdInput" name="friendId">
+            <input type="text" id="messageInput" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
