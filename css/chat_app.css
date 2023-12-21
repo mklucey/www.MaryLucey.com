@@ -87,3 +87,14 @@ input {
     border: 1px solid limegreen;
     border-radius: 5px;
 }
+
+button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: cyan;
+    border: none;
+    border-radius: 5px;
+    color: lime;
+    cursor: pointer;
+}
