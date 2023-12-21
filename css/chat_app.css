@@ -10,3 +10,11 @@ body {
     color: white;
     background: linear-gradient(100% red, 50% blue);
 }
+
+#signupForm {
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #dc143c;
+    border-radius: 10px;
+}
