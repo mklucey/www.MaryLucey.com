@@ -8,7 +8,7 @@ body {
     font-family: 'Comic Sans MS', cursive;
     font-size: 18px;
     color: white;
-   background-image: linear-gradient(100% red, 50% blue);
+   background: linear-gradient(135deg, #E9133A, #0AB7C1);
 }
 
 #signupForm {
