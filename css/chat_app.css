@@ -22,3 +22,13 @@ label {
     display: block;
     margin: 10px 0 5px;
 }
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #dc143c;
+    border: 1px solid limegreen;
+    border-radius: 5px;
+}
