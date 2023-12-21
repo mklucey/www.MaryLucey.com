@@ -136,6 +136,7 @@ body {
     background: linear-gradient(135deg, #E9133A, #0AB7C1);
 }
 
+/* Add this to your existing CSS code */
 #chatContainer {
     display: flex;
     flex-direction: column;
@@ -146,6 +147,7 @@ body {
 #userList,
 #chatMessages {
     width: 100%;
+    margin-bottom: 20px;
     background-color: #dc143c;
     border-radius: 10px;
     padding: 10px;
@@ -154,11 +156,12 @@ body {
 #messageForm {
     width: 100%;
     display: flex;
-    box-sizing: border-box;
+    justify-content: space-between;
+    margin-top: 10px; /* Add margin-top for spacing */
 }
 
 #messageInput {
-    flex: 1;
+    flex: 1; /* Allow the input to take up remaining space */
     padding: 10px;
     box-sizing: border-box;
     background-color: #dc143c;
