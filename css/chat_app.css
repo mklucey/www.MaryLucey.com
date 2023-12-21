@@ -56,3 +56,11 @@ button {
         margin: 0 auto;
     }
 }
+
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 18px;
+    color: limegreen;
+    background: linear-gradient(135deg, #E9133A, #0AB7C1);
+}
