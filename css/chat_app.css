@@ -18,3 +18,7 @@ body {
     background-color: #dc143c;
     border-radius: 10px;
 }
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
