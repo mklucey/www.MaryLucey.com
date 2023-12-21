@@ -154,12 +154,11 @@ body {
 #messageForm {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Align items vertically in the center */
+    box-sizing: border-box;
 }
 
 #messageInput {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
     padding: 10px;
     box-sizing: border-box;
     background-color: #dc143c;
@@ -178,6 +177,7 @@ button {
     color: #dc143c;
     cursor: pointer;
 }
+
 /* Mobile-friendly styles */
 @media screen and (min-width: 600px) {
     /* Add styles for larger screens if needed */
