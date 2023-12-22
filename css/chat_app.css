@@ -213,3 +213,11 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
+
+#chatContainer {
+    width: 100%;
+    background-color: #dc143c;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
