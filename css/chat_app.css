@@ -242,3 +242,21 @@ body {
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: cyan;
+    border: none;
+    border-radius: 5px;
+    color: #dc143c;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+    /* Add additional styles for larger screens if needed */
+    #chatContainer {
+        max-width: 600px;
+    }
+}
