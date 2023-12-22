@@ -226,3 +226,8 @@ body {
     margin-bottom: 20px;
 }
 
+#privateMessageForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
