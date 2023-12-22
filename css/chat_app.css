@@ -1,16 +1,17 @@
-/* Reset some default styles */
-body, h2, form {
-    margin: 0;
-    padding: 0;
-}
-
+/* Global Styles */
 body {
+    margin: 0;
     font-family: 'Comic Sans MS', cursive;
     font-size: 18px;
-    color: white;
-   background: linear-gradient(135deg, #E9133A, #0AB7C1);
 }
 
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: purple;
+}
+
+/* Signup Form Styles */
 #signupForm {
     max-width: 300px;
     margin: 50px auto;
@@ -18,12 +19,13 @@ body {
     background-color: #dc143c;
     border-radius: 10px;
 }
-label {
+
+#signupForm label {
     display: block;
     margin: 10px 0 5px;
 }
 
-input {
+#signupForm input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -33,7 +35,7 @@ input {
     border-radius: 5px;
 }
 
-button {
+#signupForm button {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -44,27 +46,7 @@ button {
     cursor: pointer;
 }
 
-/* Mobile-friendly styles */
-@media screen and (min-width: 600px) {
-    /* Add styles for larger screens if needed */
-    body {
-        font-size: 20px;
-    }
-
-    #updateProfileForm {
-        width: 50%;
-        margin: 0 auto;
-    }
-}
-
-body {
-    margin: 0;
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 18px;
-    color: limegreen;
-    background: linear-gradient(135deg, #E9133A, #0AB7C1);
-}
-
+/* Login Form Styles */
 #loginForm {
     max-width: 300px;
     margin: 50px auto;
@@ -73,12 +55,12 @@ body {
     border-radius: 10px;
 }
 
-label {
+#loginForm label {
     display: block;
     margin: 10px 0 5px;
 }
 
-input {
+#loginForm input {
     width: calc(100% - 20px);
     padding: 8px;
     margin-bottom: 10px;
@@ -88,7 +70,7 @@ input {
     border-radius: 5px;
 }
 
-button {
+#loginForm button {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -99,44 +81,7 @@ button {
     cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
-    /* Add additional styles for larger screens if needed */
-    #loginForm {
-        max-width: 600px;
-    }
-}
-/* Mobile-first styles */
-h1 {
-    text-align: center;
-    font-size: 24px;
-	color: purple;
-    margin: 20px 0;
-}
-
-/* Media query for larger screens */
-@media only screen and (min-width: 600px) {
-    h1 {
-		text-align: center;
-        font-size: 32px;
-		color: purple;
-        margin: 30px 0;
-    }
-}
-
-/* Reset some default styles */
-body, h2, form {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 18px;
-    color: white;
-    background: linear-gradient(135deg, #E9133A, #0AB7C1);
-}
-
-/* Add this to your existing CSS code */
+/* Main Chat Styles */
 #chatContainer {
     display: flex;
     flex-direction: column;
@@ -153,15 +98,15 @@ body {
     padding: 10px;
 }
 
-#messageForm {
+#chatMessageForm {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 10px; /* Add margin-top for spacing */
+    margin-top: 10px;
 }
 
 #messageInput {
-    flex: 1; /* Allow the input to take up remaining space */
+    flex: 1;
     padding: 10px;
     box-sizing: border-box;
     background-color: #dc143c;
@@ -170,7 +115,7 @@ body {
     margin-right: 10px;
 }
 
-button {
+#chatMessageForm button {
     width: 70px;
     padding: 10px;
     box-sizing: border-box;
@@ -181,31 +126,7 @@ button {
     cursor: pointer;
 }
 
-/* Mobile-friendly styles */
-@media screen and (min-width: 600px) {
-    /* Add styles for larger screens if needed */
-    body {
-        font-size: 20px;
-    }
-
-    #chatContainer {
-        max-width: 600px;
-    }
-
-    #updateProfileForm {
-        width: 50%;
-        margin: 0 auto;
-    }
-}
-
-body {
-    margin: 0;
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 18px;
-    color: limegreen;
-    background: linear-gradient(100% #dc143c, 50% #0b74a1);
-}
-
+/* Private Chat Styles */
 #friendList {
     width: 100%;
     margin-bottom: 20px;
@@ -224,13 +145,13 @@ body {
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    height: 100vh; /* Take up the full viewport height */
+    height: 100vh;
 }
 
 #privateChatMessages {
-    flex: 1; /* Grow and take up available space */
+    flex: 1;
     margin-bottom: 20px;
-    overflow-y: auto; /* Add vertical scrollbar if needed */
+    overflow-y: auto;
 }
 
 #privateMessageForm {
@@ -250,7 +171,7 @@ body {
     margin-bottom: 10px;
 }
 
-button {
+#privateMessageForm button {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -261,35 +182,3 @@ button {
     cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
-    /* Add additional styles for larger screens if needed */
-    #chatContainer {
-        max-width: 600px;
-    }
-}
-body {
-    margin: 0;
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 18px;
-    color: limegreen;
-    background: linear-gradient(100% #dc143c, 50% #0b74a1);
-}
-
-#friendRequestsContainer {
-    width: 100%;
-    max-width: 600px; /* Adjust the maximum width as needed */
-    background-color: #dc143c;
-    border-radius: 10px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin: 20px;
-}
-
-/* Add additional styling for friend requests list if needed */
-
-@media only screen and (min-width: 600px) {
-    /* Add additional styles for larger screens if needed */
-    #friendRequestsContainer {
-        max-width: 800px; /* Adjust the maximum width as needed */
-    }
-}
