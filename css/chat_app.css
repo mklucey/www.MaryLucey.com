@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Comic Sans MS', cursive;
     font-size: 18px;
+    background: linear-gradient(180deg, #dc143c 100%, #045885 50%);
 }
 
 h1 {
