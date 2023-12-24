@@ -11,4 +11,11 @@
     <form id="addFriendForm" enctype="multipart/form-data" action="add_friend_process.php" method="post">
         <label for="friendUsername">Friend's Username:</label>
         <input type="text" id="friendUsername" name="friendUsername" required>
+		
+		  <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" accept="images/*" required>
+
+        <button type="button" id="addFriendBtn">Add Friend</button>
+    </form>
+
 
