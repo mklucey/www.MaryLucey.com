@@ -255,3 +255,11 @@ body {
 h2 {
     text-align: center;
 }
+
+form {
+    max-width: 80%;
+    margin: 20px auto;
+    background-color: #dc143c;
+    padding: 20px;
+    border-radius: 10px;
+}
