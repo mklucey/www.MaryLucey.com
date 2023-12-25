@@ -279,6 +279,9 @@ input[type="file"] {
     border: 1px solid white;
     color: white;
 }
+textarea {
+    height: 150px; /* Adjust the height as needed */
+}
 button {
     width: calc(100% - 20px);
     padding: 10px;
