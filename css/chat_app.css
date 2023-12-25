@@ -263,3 +263,8 @@ form {
     padding: 20px;
     border-radius: 10px;
 }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
