@@ -17,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
 		$stmt->bind_param("sss", $username, $hashedPassword, $email);
 		$result = $stmt->execute();
+		
+		if ($result) {
+            echo "Signup successful. You can now login.";
+            header('Location: login.html'); // Redirect to login page
+            exit();
 
 
 
