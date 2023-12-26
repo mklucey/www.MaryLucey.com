@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	 } else {
          // Hash the password using password_hash
          $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+		 
+		// Insert user data into the database using prepared statements
 
 
 
