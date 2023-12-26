@@ -336,3 +336,13 @@ textarea {
     border: 1px solid white;
     color: white;
 }
+
+button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: cyan;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
