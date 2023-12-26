@@ -19,3 +19,11 @@ $(document).ready(function () {
                     password: password, // Send the plain password
                     email: email
                 },
+				success: function (response) {
+                    alert(response);
+                    if (response.includes("successful")) {
+                        window.location.href = 'login.html'; // Redirect to login page
+                    } else {
+                        // Signup failed, stay on the signup page
+                    }
+                },
