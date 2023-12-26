@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		 
 		// Insert user data into the database using prepared statements
 		$stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+		$stmt->bind_param("sss", $username, $hashedPassword, $email);
 
 
 
