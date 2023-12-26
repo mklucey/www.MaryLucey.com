@@ -27,3 +27,10 @@ $(document).ready(function () {
                         // Signup failed, stay on the signup page
                     }
                 },
+				 error: function () {
+                     alert("Signup failed. Please try again.");
+                }
+            });
+        }
+    });
+});
