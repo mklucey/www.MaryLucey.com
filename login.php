@@ -25,17 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
 
-                // Display success message
-                echo "Login successful. Enjoy chatting.";
-
-                exit();
+                // Respond with JSON indicating success
+                echo json_encode(array("status" => "success", "message" => "Login successful. Enjoy chatting."));
             } else {
-                echo "Username and/or password is incorrect. Please try again.";
+                // Respond with JSON indicating failure
+                echo json_encode(array("status" => "error", "message" => "Username and/or password is incorrect. Please try again."));
             }
         } else {
-            echo "Username and/or password is incorrect. Please try again.";
+            // Respond with JSON indicating failure
+            echo json_encode(array("status" => "error", "message" => "Username and/or password is incorrect. Please try again."));
         }
         $stmt->close();
     }
 }
 ?>
+

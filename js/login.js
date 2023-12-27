@@ -1,35 +1,31 @@
-// Use strict mode to catch common coding mistakes
 'use strict';
 
 $(document).ready(function () {
-    // Form submission event
     $('#loginForm').submit(function (event) {
-        // Prevent the default form submission
         event.preventDefault();
 
-        // Create a FormData object with the form data
         var formData = new FormData(this);
 
-        // AJAX request
         $.ajax({
             type: 'POST',
             url: 'login.php',
             data: formData,
             contentType: false,
             processData: false,
+            dataType: 'json', // Expect JSON response from the server
             success: function (response) {
-                // Display response
-                alert(response);
+                console.log('AJAX success:', response);
 
-                // Check if the response contains success message
-                if (response.includes('Login successful. Enjoy chatting.')) {
-                    // Redirect to the main chat page
+                if (response.status === 'success') {
+                    console.log('Login successful. Enjoy chatting');
                     window.location.href = 'main_chat.html';
+                } else {
+                    alert(response.message);
                 }
             },
-            error: function () {
-                // Display error message
-                alert('Username and/or password is incorrect. Please try again.');
+            error: function (error) {
+                console.error('AJAX error:', error);
+                alert('Login failed. Please try again.');
             }
         });
     });
