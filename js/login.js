@@ -17,9 +17,8 @@ $(document).ready(function () {
                     window.location.href = 'main_chat.html';
                 }
             },
-            error: function (error) {
-                console.error('Error in AJAX request:', error);
-                alert('An error occurred. Please try again.');
+            error: function () {
+                alert('Usename and/or password is incorrect. Please try again.');
             }
         });
     });
