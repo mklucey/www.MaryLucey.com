@@ -12,18 +12,19 @@ $(document).ready(function () {
             data: formData,
             contentType: false,
             processData: false,
-            dataType: 'json',
             success: function (response) {
                 console.log('AJAX success:', response);
 
-                if (response.status === 'success') {
-                    console.log('Login successful. Enjoy chatting.');
-                    window.location.href = 'main_chat.html';
-                } else {
-                    alert(response.message);
-                }
+                // Display success message
+                alert('Login successful. Enjoy chatting.');
+
+                // Redirect to main_chat.html
+                window.location.href = 'main_chat.html';
             },
-            error: function () {
+            error: function (error) {
+                console.error('AJAX error:', error);
+
+                // Display error message
                 alert('Login failed. Please try again.');
             }
         });
