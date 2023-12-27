@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate input
     if (empty($username) || empty($password)) {
-        echo "Login failed. Please enter both username and password.";
+        $response = array("status" => "error", "message" => "Login failed. Please enter both username and password.");
     } else {
         // Use prepared statement to prevent SQL injection
         $stmt = $conn->prepare("SELECT * FROM login WHERE username = ?");
@@ -25,18 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
 
-                // Respond with JSON indicating success
-                echo json_encode(array("status" => "success", "message" => "Login successful. Enjoy chatting."));
+                // Display success message
+                $response = array("status" => "success", "message" => "Login successful. Enjoy chatting.");
             } else {
-                // Respond with JSON indicating failure
-                echo json_encode(array("status" => "error", "message" => "Username and/or password is incorrect. Please try again."));
+                $response = array("status" => "error", "message" => "Username and/or password is incorrect. Please try again.");
             }
         } else {
-            // Respond with JSON indicating failure
-            echo json_encode(array("status" => "error", "message" => "Username and/or password is incorrect. Please try again."));
+            $response = array("status" => "error", "message" => "Username and/or password is incorrect. Please try again.");
         }
         $stmt->close();
     }
+
+    // Send JSON response
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 ?>
-
