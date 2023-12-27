@@ -8,8 +8,8 @@ $(document).ready(function () {
             type: 'POST',
             url: 'login.php',
             data: formData,
-            processData: false,
             contentType: false,
+            processData: false,
             success: function (response) {
                 alert(response);
 
@@ -17,8 +17,9 @@ $(document).ready(function () {
                     window.location.href = 'main_chat.html';
                 }
             },
-            error: function () {
-                alert('Username and/or password is incorrect. Please try again.');
+            error: function (error) {
+                console.error('Error in AJAX request:', error);
+                alert('An error occurred. Please try again.');
             }
         });
     });
