@@ -2,12 +2,14 @@ $(document).ready(function () {
     $('#loginForm').submit(function (event) {
         event.preventDefault();
 
-        var formData = $(this).serialize(); // Serialize the form data
+        var formData = new FormData(this);
 
         $.ajax({
             type: 'POST',
             url: 'login.php',
             data: formData,
+            processData: false,
+            contentType: false,
             success: function (response) {
                 alert(response);
 
