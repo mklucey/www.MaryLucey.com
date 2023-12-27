@@ -15,9 +15,15 @@ $(document).ready(function () {
 			 success: function (response) {
                 alert(response); // Display the response message
 
-                if (response.includes('Login successful')) {
+                if (response.includes('Login successful. Enjoy chatting.')) {
                     // Redirect to the main chat page upon successful login
                     window.location.href = 'main_chat.html';
                 }
             },
+			 error: function () {
+                alert('Username and/or password is incorrect. Please try again.');
+            }
+        });
+    });
+});
 
