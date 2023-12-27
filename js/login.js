@@ -3,5 +3,13 @@ $(document).ready(function () {
         event.preventDefault();
 		
 		var username = $('#username').val();
-        var password = $('#password').val();
+        var password = $('#password').val
+		
+		$.ajax({
+            type: 'POST',
+            url: 'login.php',
+            data: {
+                username: username,
+                password: password
+            },
 
