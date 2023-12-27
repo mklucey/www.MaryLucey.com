@@ -14,6 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
+		
+		if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            // Verify the password
+            if (password_verify($password, $row['password'])) {
+                // Start a session and store user data
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['username'] = $row['username'];
+
+                // Display success message
+                echo "Login successful. Enjoy chatting.";
+
+                exit();
 
 
 
