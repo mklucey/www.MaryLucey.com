@@ -1,29 +1,25 @@
 $(document).ready(function () {
     $('#loginForm').submit(function (event) {
         event.preventDefault();
-		
-		var username = $('#username').val();
-        var password = $('#password').val
-		
-		$.ajax({
+
+        var formData = new FormData(this); // Create a FormData object with the form data
+
+        $.ajax({
             type: 'POST',
             url: 'login.php',
-            data: {
-                username: username,
-                password: password
-            },
-			 success: function (response) {
-                alert(response); // Display the response message
+            data: formData,
+            processData: false,  // Prevent jQuery from automatically processing the data
+            contentType: false,  // Prevent jQuery from automatically setting the content type
+            success: function (response) {
+                alert(response);
 
                 if (response.includes('Login successful. Enjoy chatting.')) {
-                    // Redirect to the main chat page upon successful login
                     window.location.href = 'main_chat.html';
                 }
             },
-			 error: function () {
+            error: function () {
                 alert('Username and/or password is incorrect. Please try again.');
             }
         });
     });
 });
-
