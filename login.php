@@ -4,18 +4,18 @@ include 'db_connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-	
-	// Validate input
+
+    // Validate input
     if (empty($username) || empty($password)) {
         echo "Login failed. Please enter both username and password.";
-	} else {
+    } else {
         // Use prepared statement to prevent SQL injection
         $stmt = $conn->prepare("SELECT * FROM login WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-		
-		if ($result && $result->num_rows > 0) {
+
+        if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();
 
             // Verify the password
@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Login successful. Enjoy chatting.";
 
                 exit();
-			 } else {
-                 echo "Username and/or password is incorrect. Please try again.";
+            } else {
+                echo "Username and/or password is incorrect. Please try again.";
             }
         } else {
             echo "Username and/or password is incorrect. Please try again.";
@@ -38,7 +38,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 }
-
-
-
 ?>
