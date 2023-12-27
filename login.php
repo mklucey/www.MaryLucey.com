@@ -21,8 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verify the password
             if (password_verify($password, $row['password'])) {
-                // Start a session and store user data
-                session_start();
+                // Store user data in the session
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
 
