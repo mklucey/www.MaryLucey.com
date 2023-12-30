@@ -21,8 +21,8 @@ $(document).ready(function () {
                     window.location.href = 'main_chat.html';
                 }
             },
-            error: function () {
-                alert('Error submitting the form');
+            error: function (xhr, status, error) {
+                alert('Error submitting the form: ' + error);
             }
         });
     });
