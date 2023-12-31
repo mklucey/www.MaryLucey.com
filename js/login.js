@@ -1,28 +1,19 @@
-$(document).ready(function () {
-    $('#loginForm').submit(function (event) {
-        event.preventDefault();
+// login.js
 
-        var username = $('#username').val();
-        var password = $('#password').val();
+$(document).ready(function() {
+    $("#loginForm").submit(function(e) {
+        e.preventDefault(); // prevent the form from submitting in the traditional way
 
+        // AJAX request
         $.ajax({
-            type: 'POST',
-            url: 'login.php',
-            data: {
-                username: username,
-                password: password
-            },
-            dataType: 'json', // Specify the expected data type
-            success: function (response) {
-                alert(response.message); // Display the response message
-
-                if (response.status === 'success') {
-                    // Redirect to the main chat page upon successful login
-                    window.location.href = 'main_chat.html';
+            type: "POST",
+            url: "login.php",
+            data: $("#loginForm").serialize(), // serializes the form's elements
+            success: function(response) {
+                alert(response); // show the response from the php script
+                if (response.includes("successful")) {
+                    window.location.href = "main_chat.html"; // redirect to the main_chat.html page
                 }
-            },
-            error: function (xhr, status, error) {
-                alert('Error submitting the form: ' + error);
             }
         });
     });
