@@ -11,7 +11,7 @@ $(document).ready(function() {
             data: $("#loginForm").serialize(), // serializes the form's elements
             success: function(response) {
                 alert(response); // show the response from the php script
-                if (response.includes("successful")) {
+                if (response.trim() === "Login successful. Enjoy chatting") {
                     window.location.href = "main_chat.html"; // redirect to the main_chat.html page
                 }
             }
