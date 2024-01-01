@@ -9,19 +9,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM login WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $stmt->store_result();
+    // Print SQL query for debugging
+    $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
+    echo "SQL Query: $sql";
 
-    if ($stmt->num_rows > 0) {
-        $response['status'] = "success";
+    $result = $conn->query($sql);
+
+    if ($result === false) {
+        $response['status'] = "error";
+        $response['message'] = "Error executing the SQL query: " . $conn->error;
     } else {
-        $response['status'] = "failure";
+        if ($result->num_rows > 0) {
+            $response['status'] = "success";
+        } else {
+            $response['status'] = "failure";
+        }
     }
-
-    $stmt->close();
 
     // Send the JSON-encoded response
     header('Content-Type: application/json');
