@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        echo "Login successful"; // Only the success message, without additional text
+        echo "success"; // Send a simple success message
     } else {
-        echo "Login failed"; // Only the failure message, without additional text
+        echo "failure"; // Send a simple failure message
     }
 }
 
