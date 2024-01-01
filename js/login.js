@@ -8,7 +8,6 @@ $(document).ready(function() {
             type: "POST",
             url: "login.php",
             data: $("#loginForm").serialize(),
-            dataType: "text",
             success: function(response) {
                 console.log(response);
 
