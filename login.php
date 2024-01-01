@@ -7,19 +7,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    // Check credentials in the database
-    $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
-    $result = $conn->query($sql);
+    // Use prepared statements to prevent SQL injection
+    $stmt = $conn->prepare("SELECT * FROM login WHERE username = ? AND password = ?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if (!$result) {
-        echo "Error: " . $sql . "<br>" . $conn->error; // Output any SQL errors
+    if ($stmt->num_rows > 0) {
+        echo "success";
     } else {
-        if ($result->num_rows > 0) {
-            echo "success";
-        } else {
-            echo "failure";
-        }
+        echo "failure";
     }
+
+    $stmt->close();
 }
 
 $conn->close();
