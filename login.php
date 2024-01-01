@@ -11,10 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        echo "success"; // Send a simple success message
+    if (!$result) {
+        echo "Error: " . $sql . "<br>" . $conn->error; // Output any SQL errors
     } else {
-        echo "failure"; // Send a simple failure message
+        if ($result->num_rows > 0) {
+            echo "success";
+        } else {
+            echo "failure";
+        }
     }
 }
 
