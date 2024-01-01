@@ -10,7 +10,7 @@ $(document).ready(function() {
             data: $("#loginForm").serialize(),
             dataType: "json", // Expect JSON response
             success: function(response) {
-                console.log(response);
+                console.log("Complete Response:", response);
 
                 if (response.status === "success") {
                     alert("Login successful. Enjoy chatting");
