@@ -4,6 +4,8 @@
 include 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $response = array(); // Create an array for response
+
     $username = $_POST["username"];
     $password = $_POST["password"];
 
@@ -14,12 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "success";
+        $response['status'] = "success";
     } else {
-        echo "failure";
+        $response['status'] = "failure";
     }
 
     $stmt->close();
+
+    // Send the JSON-encoded response
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 
 $conn->close();
