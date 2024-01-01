@@ -8,10 +8,11 @@ $(document).ready(function() {
             type: "POST",
             url: "login.php",
             data: $("#loginForm").serialize(),
+            dataType: "json", // Expect JSON response
             success: function(response) {
                 console.log(response);
 
-                if (response.trim() === "success") {
+                if (response.status === "success") {
                     alert("Login successful. Enjoy chatting");
                     window.location.href = "main_chat.html";
                 } else {
