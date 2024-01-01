@@ -2,24 +2,25 @@
 
 $(document).ready(function() {
     $("#loginForm").submit(function(e) {
-        e.preventDefault(); // prevent the form from submitting in the traditional way
+        e.preventDefault();
 
-        // AJAX request
         $.ajax({
             type: "POST",
             url: "login.php",
-            data: $("#loginForm").serialize(), // serializes the form's elements
+            data: $("#loginForm").serialize(),
+            dataType: "text", // Specify the expected data type
             success: function(response) {
-                console.log(response); // Log the response in the console for debugging
+                console.log(response);
+
                 if (response.trim() === "Login successful. Enjoy chatting") {
-                    alert("Login successful. Enjoy chatting"); // Debugging: show an alert
-                    window.location.href = "main_chat.html"; // redirect to the main_chat.html page
+                    alert("Login successful. Enjoy chatting");
+                    window.location.href = "main_chat.html";
                 } else {
-                    alert("Login failed. Please try again"); // Debugging: show an alert
+                    alert("Login failed. Please try again");
                 }
             },
             error: function(xhr, status, error) {
-                console.error(xhr.responseText); // Log any errors to the console
+                console.error(xhr.responseText);
             }
         });
     });
