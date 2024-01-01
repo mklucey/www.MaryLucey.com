@@ -12,7 +12,7 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response);
 
-                if (response.trim() === "Login successful") {
+                if (response.trim() === "success") {
                     alert("Login successful. Enjoy chatting");
                     window.location.href = "main_chat.html";
                 } else {
