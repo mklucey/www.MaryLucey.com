@@ -1,27 +1,30 @@
-// login.js
+$(document).ready(function(){
+    $("#loginForm").submit(function(event){
+        event.preventDefault();
+        var username = $("#username").val();
+        var password = $("#password").val();
 
-$(document).ready(function() {
-    $("#loginForm").submit(function(e) {
-        e.preventDefault();
+        // Validate input fields
+        if(username === '' || password === '') {
+            alert("Please enter both username and password");
+            return;
+        }
 
+        // AJAX request to login.php
         $.ajax({
             type: "POST",
             url: "login.php",
-            data: $("#loginForm").serialize(),
-            dataType: "json", // Expect JSON response
-            success: function(response) {
-                console.log("Complete Response:", response);
-
-                if (response.status === "success") {
-                    alert("Login successful. Enjoy chatting");
+            data: {username: username, password: password},
+            success: function(response){
+                alert(response); // Display the message from PHP
+                if(response.includes("successful")) {
                     window.location.href = "main_chat.html";
-                } else {
-                    alert("Login failed. Please try again");
                 }
             },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
+            error: function(){
+                alert("Error during AJAX request");
             }
         });
     });
 });
+
