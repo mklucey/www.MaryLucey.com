@@ -13,9 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Login successful
-        echo "Login successful. Enjoy chatting";
-        // Redirect to main_chat.html
+        // Redirect to main_chat.html first, then exit
         header("Location: main_chat.html");
         exit();
     } else {
