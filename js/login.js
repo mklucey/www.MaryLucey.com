@@ -15,9 +15,10 @@ $(document).ready(function(){
             type: "POST",
             url: "login.php",
             data: {username: username, password: password},
+            dataType: "json", // Expect JSON response
             success: function(response){
-                alert(response); // Display the message from PHP
-                if(response.includes("successful")) {
+                alert(response.message); // Display the message from PHP
+                if(response.status === "success") {
                     window.location.href = "main_chat.html";
                 }
             },
@@ -27,4 +28,3 @@ $(document).ready(function(){
         });
     });
 });
-
