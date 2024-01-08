@@ -13,12 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Redirect to main_chat.html first, then exit
-        header("Location: main_chat.html");
+        // Login successful
+        $response = array("status" => "success", "message" => "Login successful. Enjoy chatting");
+        echo json_encode($response);
         exit();
     } else {
         // Login failed
-        echo "Login failed. Please try again";
+        $response = array("status" => "error", "message" => "Login failed. Please try again");
+        echo json_encode($response);
+        exit();
     }
 }
 
