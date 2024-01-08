@@ -12,6 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM login WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);
 
+    if (!$result) {
+        // Handle query error
+        $response = array("status" => "error", "message" => "Query error: " . $conn->error);
+        echo json_encode($response);
+        exit();
+    }
+
     if ($result->num_rows > 0) {
         // Login successful
         $response = array("status" => "success", "message" => "Login successful. Enjoy chatting");

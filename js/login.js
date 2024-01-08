@@ -5,7 +5,7 @@ $(document).ready(function(){
         var password = $("#password").val();
 
         // Validate input fields
-        if(username === '' || password === '') {
+        if(username.trim() === '' || password.trim() === '') {
             alert("Please enter both username and password");
             return;
         }
@@ -22,8 +22,9 @@ $(document).ready(function(){
                     window.location.href = "main_chat.html";
                 }
             },
-            error: function(){
-                alert("Error during AJAX request");
+            error: function(jqXHR, textStatus, errorThrown){
+                alert("Error during AJAX request: " + textStatus + " - " + errorThrown);
+                console.log(jqXHR.responseText); // Log the full server response for debugging
             }
         });
     });
