@@ -1,36 +1,23 @@
 <?php
 include 'db_connection.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ // Get user input
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    // SQL injection prevention
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
-
-    $sql = "SELECT * FROM login WHERE username='$username' AND password='$password'";
+    // SQL query to check if the provided username and password match in the database
+    $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
     $result = $conn->query($sql);
-
-    if (!$result) {
-        // Handle query error
-        $response = array("status" => "error", "message" => "Query error: " . $conn->error);
-        echo json_encode($response);
-        exit();
-    }
 
     if ($result->num_rows > 0) {
         // Login successful
-        $response = array("status" => "success", "message" => "Login successful. Enjoy chatting");
-        echo json_encode($response);
-        exit();
+        echo "Login successful. Enjoy chatting!";
     } else {
         // Login failed
-        $response = array("status" => "error", "message" => "Login failed. Please try again");
-        echo json_encode($response);
-        exit();
+        echo "Login failed. Please try again";
     }
-}
 
-$conn->close();
+    // Close the database connection
+    $conn->close();
+}
 ?>
