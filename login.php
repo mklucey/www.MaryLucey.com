@@ -1,7 +1,9 @@
 <?php
-include 'db_connection.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Include the file with database connection details
+    include 'db_connection.php';
 
- // Get user input
+    // Get user input
     $username = $_POST["username"];
     $password = $_POST["password"];
 
@@ -17,7 +19,6 @@ include 'db_connection.php';
         echo "Login failed. Please try again";
     }
 
-    // Close the database connection
-    $conn->close();
+    // No need to close the connection here if it's handled in db_connection.php
 }
 ?>
