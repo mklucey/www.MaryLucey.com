@@ -20,7 +20,7 @@ $(document).ready(function() {
                 alert(response);
 
                 // Redirect to main_chat.html on successful login
-                if (response === "Login successful. Enjoy chatting!") {
+                if (response.includes("Login successful")) {
                     window.location.href = "main_chat.html";
                 }
             }
