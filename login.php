@@ -8,17 +8,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM login WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt = $conn->prepare("SELECT * FROM login WHERE username = ?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Login successful
-        echo "Login successful. Enjoy chatting!";
+        // User found, check password
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            // Login successful
+            echo "Login successful. Enjoy chatting!";
+        } else {
+            // Incorrect password
+            echo "Login failed. Please try again.";
+        }
     } else {
-        // Login failed
-        echo "Login failed. Please try again";
+        // User not found
+        echo "Login failed. Please try again.";
     }
 
     // Close the statement
