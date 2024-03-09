@@ -19,7 +19,10 @@ $(document).ready(function() {
                 // Display the response message
                 alert(response);
 
-                // No need to handle redirection here, as PHP handles it on success
+                // Redirect to main_chat.html on successful login
+                if (response === "Login successful") {
+                    window.location.href = "main_chat.html";
+                }
             }
         });
     });
