@@ -18,19 +18,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             // Login successful
-            echo "Login successful. Enjoy chatting!";
+            header("Location: main_chat.html");
+            exit(); // Ensure no further code execution after redirection
         } else {
             // Incorrect password
-            echo "Login failed. Please try again.";
+            echo "Incorrect password";
         }
     } else {
         // User not found
-        echo "Login failed. Please try again.";
+        echo "User not found";
     }
 
     // Close the statement
     $stmt->close();
 
-    // No need to close the connection here if it's handled in db_connection.php
+    // Close the connection
+    $conn->close();
 }
 ?>
