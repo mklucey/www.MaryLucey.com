@@ -18,8 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             // Login successful
-            header("Location: main_chat.html");
-            exit(); // Ensure no further code execution after redirection
+            echo "Login successful";
         } else {
             // Incorrect password
             echo "Incorrect password";
