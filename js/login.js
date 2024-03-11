@@ -19,10 +19,17 @@ $(document).ready(function() {
                 // Display the response message
                 alert(response);
 
+                // Debugging statement
+                console.log("Response from server: ", response);
+
                 // Redirect to main_chat.html on successful login
                 if (response === "Login successful") {
                     window.location.href = "main_chat.html";
                 }
+            },
+            error: function(xhr, status, error) {
+                // Debugging statement for AJAX error
+                console.log("AJAX error:", error);
             }
         });
     });
