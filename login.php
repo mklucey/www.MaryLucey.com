@@ -26,6 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // User not found
         echo "User not found";
+
+        // Log the provided username for debugging
+        error_log("Username not found: " . $username);
     }
 
     // Close the statement
