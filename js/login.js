@@ -15,20 +15,22 @@ $(document).ready(function() {
                 username: username,
                 password: password
             },
+            dataType: "json", // Expect JSON response
             success: function(response) {
                 // Display the response message
-                alert(response);
+                alert(response.message);
 
                 // Debugging statement
                 console.log("Response from server: ", response);
 
                 // Redirect to main_chat.html on successful login
-                if (response === "Login successful") {
+                if (response.status === "success") {
                     window.location.href = "main_chat.html";
                 }
             },
             error: function(xhr, status, error) {
-                // Debugging statement for AJAX error
+                // Display error message for AJAX error
+                alert("Login failed. Please try again.");
                 console.log("AJAX error:", error);
             }
         });
