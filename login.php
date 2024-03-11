@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include the file with database connection details
     include 'db_connection.php';
@@ -18,17 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             // Login successful
-            echo "Login successful";
+            echo json_encode(["status" => "success", "message" => "Login successful"]);
         } else {
             // Incorrect password
-            echo "Incorrect password";
+            echo json_encode(["status" => "error", "message" => "Incorrect password"]);
         }
     } else {
         // User not found
-        echo "User not found";
-
-        // Log the provided username for debugging
-        error_log("Username not found: " . $username);
+        echo json_encode(["status" => "error", "message" => "User not found"]);
     }
 
     // Close the statement
