@@ -1,37 +1,22 @@
 $(document).ready(function() {
-    // Handle form submission using AJAX
-    $("#loginForm").submit(function(e) {
-        e.preventDefault();
+    $('#loginForm').submit(function(e) {
+        e.preventDefault(); // Prevent form submission
 
         // Get form data
-        var username = $("#username").val();
-        var password = $("#password").val();
+        var formData = $(this).serialize();
 
-        // AJAX request to login.php
+        // Send AJAX request
         $.ajax({
-            type: "POST",
-            url: "login.php",
-            data: {
-                username: username,
-                password: password
-            },
-            dataType: "json", // Expect JSON response
+            type: 'POST',
+            url: 'login.php',
+            data: formData,
             success: function(response) {
-                // Display the response message
-                alert(response.message);
-
-                // Debugging statement
-                console.log("Response from server: ", response);
-
-                // Redirect to main_chat.html on successful login
-                if (response.status === "success") {
-                    window.location.href = "main_chat.html";
+                if (response === 'success') {
+                    alert('Login successful. Enjoy chatting!');
+                    window.location.href = 'main_chat.html'; // Redirect to main chat page
+                } else {
+                    alert('Login failed. Please try again.');
                 }
-            },
-            error: function(xhr, status, error) {
-                // Display error message for AJAX error
-                alert("Login failed. Please try again.");
-                console.log("AJAX error:", error);
             }
         });
     });
