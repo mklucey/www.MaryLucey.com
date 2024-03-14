@@ -1,39 +1,23 @@
 <?php
-header('Content-Type: application/json');
+session_start();
+include('db_connection.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Include the file with database connection details
-    include 'db_connection.php';
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    // Get user input
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    // Sanitize inputs to prevent SQL injection
+    $username = mysqli_real_escape_string($conn, $username);
+    $password = mysqli_real_escape_string($conn, $password);
 
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM login WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
 
-    if ($result->num_rows > 0) {
-        // User found, check password
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            // Login successful
-            echo json_encode(["status" => "success", "message" => "Login successful"]);
-        } else {
-            // Incorrect password
-            echo json_encode(["status" => "error", "message" => "Incorrect password"]);
-        }
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['username'] = $username;
+        echo "success";
     } else {
-        // User not found
-        echo json_encode(["status" => "error", "message" => "User not found"]);
+        echo "failure";
     }
-
-    // Close the statement
-    $stmt->close();
-
-    // Close the connection
-    $conn->close();
 }
 ?>
