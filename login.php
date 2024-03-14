@@ -2,6 +2,8 @@
 session_start();
 include('db_connection.php');
 
+$response = array('success' => false);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -15,9 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_num_rows($result) == 1) {
         $_SESSION['username'] = $username;
-        echo "success";
-    } else {
-        echo "failure";
+        $response['success'] = true;
     }
 }
+
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>
