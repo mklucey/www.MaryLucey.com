@@ -14,11 +14,11 @@ $(document).ready(function() {
             data: formData,
             dataType: 'json', // Specify JSON data type
             success: function(response) {
-                if (response.success) {
+                if (response && response.success) {
                     alert('Login successful. Enjoy chatting!');
                     window.location.href = 'main_chat.html'; // Redirect to main chat page
                 } else {
-                    if (response.error) {
+                    if (response && response.error) {
                         alert('Login failed: ' + response.error);
                     } else {
                         alert('Login failed. Please try again.');
