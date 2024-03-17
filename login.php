@@ -39,6 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-header('Content-Type: application/json');
+// Send the response as JSON
 echo json_encode($response);
 ?>
