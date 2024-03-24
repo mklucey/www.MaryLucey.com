@@ -15,9 +15,13 @@ $(document).ready(function() {
             success: function(response) {
                 // Display response message
                 alert(response);
-                if (response === "Login successful. Enjoy chatting") {
+                if (response.trim() === "Login successful. Enjoy chatting") {
                     window.location.href = "main_chat.html";
                 }
+            },
+            error: function(xhr, status, error) {
+                // Display error message
+                alert("AJAX error: " + status + ": " + error);
             }
         });
     });
