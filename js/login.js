@@ -1,32 +1,23 @@
-// Updated JavaScript code to handle login form response object correctly
-
 $(document).ready(function() {
     $('#loginForm').submit(function(e) {
         e.preventDefault(); // Prevent form submission
+        var username = $('#username').val();
+        var password = $('#password').val();
 
-        // Get form data
-        var formData = $(this).serialize();
-
-        // Send AJAX request
+        // AJAX call to login.php
         $.ajax({
             type: 'POST',
             url: 'login.php',
-            data: formData,
-            dataType: 'json', // Specify JSON data type
-            success: function(response) {
-                if (response.success) {
-                    alert('Login successful. Enjoy chatting!');
-                    window.location.href = 'main_chat.html'; // Redirect to main chat page
-                } else {
-                    if (response.error) {
-                        alert('Login failed: ' + response.error);
-                    } else {
-                        alert('Login failed. Please try again.');
-                    }
-                }
+            data: {
+                username: username,
+                password: password
             },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', error);
+            success: function(response) {
+                // Display response message
+                alert(response);
+                if (response === "Login successful. Enjoy chatting") {
+                    window.location.href = "main_chat.html";
+                }
             }
         });
     });
