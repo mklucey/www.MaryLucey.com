@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Login successful
         echo "Login successful. Enjoy chatting";
         // Redirect to main_chat.html
-        header("Location: main_chat.html");
+        echo "<script>window.location.href = 'main_chat.html';</script>";
         exit;
     } else {
         // Login failed
