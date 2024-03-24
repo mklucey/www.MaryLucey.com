@@ -1,44 +1,27 @@
 <?php
-session_start();
-include('db_connection.php');
+include 'db_connection.php'; // Include the database connection script
 
-$response = array('success' => false);
-
+// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+    // Fetch username and password from form
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-        // Use prepared statement to prevent SQL injection
-        $stmt = $conn->prepare("SELECT * FROM login WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // Check if username and password are correct
+    $sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
 
-        if (!$result) {
-            // Query failed
-            $response['error'] = mysqli_error($conn);
-        } else {
-            if ($result->num_rows == 1) {
-                $user_data = $result->fetch_assoc();
-                if (password_verify($password, $user_data['password'])) {
-                    $_SESSION['username'] = $username;
-                    $response['success'] = true;
-                } else {
-                    // Password verification failed
-                    $response['error'] = "Incorrect password";
-                }
-            } else {
-                // Username not found
-                $response['error'] = "User not found";
-            }
-        }
+    if (mysqli_num_rows($result) > 0) {
+        // Login successful
+        echo "Login successful. Enjoy chatting";
+        // Redirect to main_chat.html
+        header("Location: main_chat.html");
+        exit;
     } else {
-        // Missing username or password
-        $response['error'] = "Missing username or password";
+        // Login failed
+        echo "Login failed. Please try again";
     }
 }
 
-// Send the response as JSON
-echo json_encode($response);
+mysqli_close($conn);
 ?>
